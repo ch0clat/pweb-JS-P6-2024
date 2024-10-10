@@ -38,24 +38,54 @@ fetch('https://dummyjson.com/products/category/smartphones')
     .catch(err => console.error('Error fetching data:', err));
 
 // Function to display items dynamically
+// Function to display items dynamically
 function displayItems(items) {
     const menuContainer = document.querySelector('.menu-items');
     menuContainer.innerHTML = ''; // Clear the container
 
-    // Determine how many items to display
-    let itemsToDisplay = displayedItemsCount === 'all' ? items : items.slice(0, parseInt(displayedItemsCount));
-
-    itemsToDisplay.forEach(item => {
+    items.forEach(item => {
         const itemElement = `
             <div class="menu-card">
                 <img src="${item.thumbnail}" alt="${item.title}">
                 <h3>${item.title}</h3>
                 <p>${item.price} USD</p>
+                <div class="quantity-selector">
+                    <button onclick="changeQuantity('${item.title}', -1)">-</button>
+                    <input type="number" id="${item.title}-quantity" value="0" min="0" onchange="updateQuantity('${item.title}')">
+                    <button onclick="changeQuantity('${item.title}', 1)">+</button>
+                </div>
                 <button onclick="orderItem('${item.title}')">Order</button>
             </div>
         `;
         menuContainer.innerHTML += itemElement;
     });
+}
+
+// Function to change quantity
+function changeQuantity(itemName, change) {
+    const quantityInput = document.getElementById(`${itemName}-quantity`);
+    let currentQuantity = parseInt(quantityInput.value) || 0; // Get current quantity, default to 0
+
+    // Update the quantity based on the change (-1 or +1)
+    currentQuantity += change;
+
+    // Ensure quantity does not go below 0
+    if (currentQuantity < 0) {
+        currentQuantity = 0; // Set to 0 if it's below
+    }
+
+    quantityInput.value = currentQuantity; // Update the input field with the new quantity
+}
+
+// Function to update quantity directly from input
+function updateQuantity(itemName) {
+    const quantityInput = document.getElementById(`${itemName}-quantity`);
+    let currentQuantity = parseInt(quantityInput.value) || 0; // Default to 0 if input is invalid
+
+    // Ensure quantity does not go below 0
+    if (currentQuantity < 0) {
+        quantityInput.value = 0; // Reset to 0 if invalid
+    }
 }
 
 // Function to filter items by category

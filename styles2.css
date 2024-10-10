@@ -119,6 +119,26 @@ h1 {
 .menu-card button:hover {
     background-color: #0088cc;
 }
+
+.quantity-selector {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.quantity-selector button {
+    background-color: #008CBA; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 5px 10px; /* Padding for buttons */
+    cursor: pointer; /* Cursor style */
+}
+
+.quantity-selector input {
+    width: 40px; /* Width of input field */
+    text-align: center; /* Center text in input */
+    margin: 0 5px; /* Margin between input and buttons */
+}
 /* 
 .menu-items {
     display: flex;
@@ -243,4 +263,16 @@ footer p {
     footer {
         padding: 10px 0;
     }
+}
+
+
+/* Hide the number input spinners */
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Chrome, Safari, Edge */
+    margin: 0; /* Reset margin */
 }

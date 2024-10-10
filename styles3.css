@@ -46,6 +46,9 @@ nav ul li a:hover {
     background-image: linear-gradient(to left,#4BEB8E, #3BF1FF);
 }
 
+.cart {
+    align-items: center;
+}
 
 .container {
     display: flex;

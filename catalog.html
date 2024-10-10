@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Kopi Kenangan Pemweb</title>
+    <title>Bukan Toko Kopi</title>
+    <script type="text/javascript" src="script.js"></script>  
     <link rel="stylesheet" href="styles2.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=M PLUS Rounded 1c">
 </head>
@@ -16,81 +17,28 @@
                 </div>
             </a>
             <ul>
-                <li><a href="catalog.html">MENU</a></li>
+                <li><a href="catalog.html">SHOP</a></li>
                 <li><a href="order.html">ORDER</a></li>
             </ul>
         </nav>
     </header>
     <div class="bar" id="headerBar"></div>
-    <h1>Our <br>Menu</br></h1>
+    <h1>SHOP</br></h1>
 
-    <section class="menu"></section>
-        <div class="menu-items">
-            <div class="menu-card">
-                <img src="asset/coffee1.png" alt="Pahit Coffee">
-                <h3>Pahit Coffee</h3>
-                <p>20k</p>
-                <button>Order</button>
-            </div>
-            <div class="menu-card">
-                <img src="asset/coffee1.png" alt="Pahit Coffee">
-                <h3>Pahit Coffee</h3>
-                <p>20k</p>
-                <button>Order</button>
-            </div>
-            <div class="menu-card">
-                <img src="asset/coffee1.png" alt="Pahit Coffee">
-                <h3>Pahit Coffee</h3>
-                <p>20k</p>
-                <button>Order</button>
-            </div>
-        </div>
-    </section>
+    <div class="category">
+        <a href="#" class="category-link active" onclick="filterItems('all', this)">All</a>
+        <a href="#" class="category-link" onclick="filterItems('smartphones', this)">Smartphones</a>
+        <a href="#" class="category-link" onclick="filterItems('tablets', this)">Tablets</a>
+        <a href="#" class="category-link" onclick="filterItems('laptops', this)">Laptops</a>
+    </div>
 
-    <section class="menu"></section>
+    <section class="menu">
         <div class="menu-items">
-            <div class="menu-card">
-                <img src="asset/coffee1.png" alt="Pahit Coffee">
-                <h3>Pahit Coffee</h3>
-                <p>20k</p>
-                <button>Order</button>
-            </div>
-            <div class="menu-card">
-                <img src="asset/coffee1.png" alt="Pahit Coffee">
-                <h3>Pahit Coffee</h3>
-                <p>20k</p>
-                <button>Order</button>
-            </div>
-            <div class="menu-card">
-                <img src="asset/coffee1.png" alt="Pahit Coffee">
-                <h3>Pahit Coffee</h3>
-                <p>20k</p>
-                <button>Order</button>
-            </div>
+            
         </div>
-    </section>
-
-    <section class="menu"></section>
-        <div class="menu-items">
-            <div class="menu-card">
-                <img src="asset/coffee1.png" alt="Pahit Coffee">
-                <h3>Pahit Coffee</h3>
-                <p>20k</p>
-                <button>Order</button>
-            </div>
-            <div class="menu-card">
-                <img src="asset/coffee1.png" alt="Pahit Coffee">
-                <h3>Pahit Coffee</h3>
-                <p>20k</p>
-                <button>Order</button>
-            </div>
-            <div class="menu-card">
-                <img src="asset/coffee1.png" alt="Pahit Coffee">
-                <h3>Pahit Coffee</h3>
-                <p>20k</p>
-                <button>Order</button>
-            </div>
-        </div>
+        <a href="#" onclick="updateItemCount('all')" class="category-link active">All</a>
+        <a href="#" onclick="updateItemCount('5')" class="category-link">5</a>
+        <a href="#" onclick="updateItemCount('10')" class="category-link">10</a>
     </section>
 
     <section class="contact">

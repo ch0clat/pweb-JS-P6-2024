@@ -46,6 +46,22 @@ nav ul li a:hover {
     background-image: linear-gradient(to left,#4BEB8E, #3BF1FF);
 }
 
+.category {
+    display: flex;
+    gap: 10%;
+    justify-content: center;
+}
+
+.category-link {
+    text-decoration: none; /* Remove default underline */
+    color: black; /* Default text color */
+}
+
+.category-link.active {
+    text-decoration: underline; /* Underline when active */
+    color: black; /* Change color for active link (optional) */
+}
+
 h1 {
     padding: 5%;
     text-align: center;
@@ -58,6 +74,52 @@ h1 {
     text-align: center;
 }
 
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 columns of equal width */
+    gap: 20px; /* Adds space between the grid items */
+    padding: 20px;
+}
+
+.menu-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.menu-card img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.menu-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.menu-card p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.menu-card button {
+    padding: 10px 20px;
+    background-color: #00aaff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-card button:hover {
+    background-color: #0088cc;
+}
+/* 
 .menu-items {
     display: flex;
     justify-content: space-around;
@@ -90,7 +152,7 @@ h1 {
     color: white;
     border-radius: 5px;
     cursor: pointer;
-}
+} */
 
 .contact {
     margin-top: 5%;
@@ -105,9 +167,9 @@ h1 {
 }
 
 .contact-images img {
-    width: 150px;
-    margin-left: 20px;
-    border-radius: 10px;
+    width: 100%; /* Make the image take the full width of its container */
+    height: 150px; /* Set a fixed height for uniformity */
+    object-fit: cover; /* Ensures the image covers the area without distorting */
 }
 
 footer {
@@ -128,12 +190,11 @@ footer p {
     }
 
     .menu-items {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .menu-card {
-        width: 80%;
+        width: 100%;
         margin-bottom: 20px;
     }
 

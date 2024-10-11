@@ -38,7 +38,6 @@ fetch('https://dummyjson.com/products/category/smartphones')
     .catch(err => console.error('Error fetching data:', err));
 
 // Function to display items dynamically
-// Function to display items dynamically
 function displayItems(items) {
     const menuContainer = document.querySelector('.menu-items');
     menuContainer.innerHTML = ''; // Clear the container
@@ -54,7 +53,7 @@ function displayItems(items) {
                     <input type="number" id="${item.title}-quantity" value="0" min="0" onchange="updateQuantity('${item.title}')">
                     <button onclick="changeQuantity('${item.title}', 1)">+</button>
                 </div>
-                <button onclick="orderItem('${item.title}')">Order</button>
+                <button onclick="orderItem('${item.title}', ${item.price})">Order</button>
             </div>
         `;
         menuContainer.innerHTML += itemElement;
@@ -105,13 +104,46 @@ function filterItems(category, element) {
     }
 }
 
-// Dummy function for ordering
-function orderItem(itemName) {
-    alert(`You have ordered: ${itemName}`);
+// Function to save the order to localStorage
+function saveToLocalStorage(item) {
+    // Get existing cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Check if item is already in the cart
+    const existingItem = cart.find(cartItem => cartItem.title === item.title);
+
+    if (existingItem) {
+        // If item exists, update the quantity
+        existingItem.quantity += item.quantity;
+    } else {
+        // If item doesn't exist, add it to the cart
+        cart.push(item);
+    }
+
+    // Save updated cart back to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Example category filters in HTML
-// <a href="#" class="category-link" onclick="filterItems('smartphones', this)" data-category="smartphones">Smartphones</a>
-// <a href="#" class="category-link" onclick="filterItems('laptops', this)" data-category="laptops">Laptops</a>
-// <a href="#" class="category-link" onclick="filterItems('tablets', this)" data-category="tablets">Tablets</a>
-// <a href="#" class="category-link" onclick="filterItems('all', this)" data-category="all">All</a>
+// Function to handle ordering an item
+function orderItem(itemName, itemPrice) {
+    const quantityInput = document.getElementById(`${itemName}-quantity`);
+    const quantity = parseInt(quantityInput.value);
+
+    // Ensure quantity is not zero
+    if (quantity <= 0) {
+        alert("Quantity cannot be zero. Please select at least 1 item.");
+        return;
+    }
+
+    // Create the item object to store
+    const item = {
+        title: itemName,
+        price: itemPrice,
+        quantity: quantity
+    };
+
+    // Save the item to localStorage
+    saveToLocalStorage(item);
+
+    alert(`You have ordered ${quantity} of: ${itemName}`);
+}

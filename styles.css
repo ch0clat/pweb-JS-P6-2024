@@ -139,6 +139,17 @@ p {
     margin-bottom: 15px;
 }
 
+.contact-info p {
+    padding: 0;
+}
+
+.contact-info img {
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 35px;
+    height: 30px;
+}
+
 .contact-images img {
     width: 150px;
     margin-left: 20px;

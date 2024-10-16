@@ -42,7 +42,14 @@ function displayItems(items) {
     const menuContainer = document.querySelector('.menu-items');
     menuContainer.innerHTML = ''; // Clear the container
 
-    items.forEach(item => {
+    // Determine how many items to display based on the selected count
+    let itemsToDisplay = items;
+    if (displayedItemsCount !== 'all') {
+        itemsToDisplay = items.slice(0, displayedItemsCount); // Slice the array to limit items
+    }
+
+    // Display the items
+    itemsToDisplay.forEach(item => {
         const itemElement = `
             <div class="menu-card">
                 <img src="${item.thumbnail}" alt="${item.title}">
